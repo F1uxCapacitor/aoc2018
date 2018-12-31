@@ -28,8 +28,8 @@ data['has_two'] = data['container_id'].apply(has_two)
 
 data['has_three'] = data['container_id'].apply(has_three)
 
-twos = data[data['has_two'] == True]['has_two'].size
+twos = data[data['has_two'] == True]
 
-threes = data[data['has_three'] == True]['has_three'].size
+threes = data[data['has_three'] == True]
 
-print(twos * threes)
+print(twos['has_two'].size * threes['has_three'].size)
