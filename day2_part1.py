@@ -3,13 +3,13 @@ from functools import partial
 import pandas as pd
 
 
-def count_vals(sequence, count):
+def num_chars_in_seq(seq, num):
 
-    counter = Counter(sequence)
+    counter = Counter(seq)
 
-    unique_counts = set(counter.values())
+    unique_character_counts = set(counter.values())
 
-    if count in unique_counts:
+    if num in unique_character_counts:
 
         return True
 
@@ -18,18 +18,18 @@ def count_vals(sequence, count):
         return False
 
 
-two_count = partial(count_vals, count=2)
+has_two = partial(num_chars_in_seq, num=2)
 
-three_count = partial(count_vals, count=3)
+has_three = partial(num_chars_in_seq, num=3)
 
-df = pd.read_csv('day2.input', header=None, usecols=[0])
+data = pd.read_csv('day2.input', header=None, names=['container_id'])
 
-df['two_count'] = df[0].apply(two_count)
+data['has_two'] = data['container_id'].apply(has_two)
 
-df['three_count'] = df[0].apply(three_count)
+data['has_three'] = data['container_id'].apply(has_three)
 
-twos = df[df['two_count'] == True]
+twos = data[data['has_two'] == True]['has_two'].size
 
-threes = df[df['three_count'] == True]
+threes = data[data['has_three'] == True]['has_three'].size
 
-print(twos.size * threes.size)
+print(twos * threes)
