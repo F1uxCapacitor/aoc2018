@@ -1,6 +1,6 @@
 import pandas as pd
 
-data = pd.read_csv('day1.input', squeeze=True)
+data = pd.read_csv('day1.input', header=None, squeeze=True)
 
 frequency = 0
 
