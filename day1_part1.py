@@ -1,7 +1,7 @@
 import pandas as pd
 
-df = pd.read_csv('day1.input', header=None, usecols=[0])
+data = pd.read_csv('day1.input', squeeze=True)
 
-frequency_sum = df[0].sum()
+frequency_sum = data.sum()
 
 print(frequency_sum)

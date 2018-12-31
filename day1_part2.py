@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('day1.input', header=None, usecols=[0])
+data = pd.read_csv('day1.input', squeeze=True)
 
 frequency = 0
 
@@ -12,7 +12,7 @@ cont = True
 
 while cont is True:
 
-    for _, i in df[0].iteritems():
+    for _, i in data.iteritems():
 
         frequency += i
 
